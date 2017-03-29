@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329112720) do
+ActiveRecord::Schema.define(version: 20170329115253) do
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "schedule_locations", force: :cascade do |t|
+    t.integer  "location_id", null: false
+    t.time     "open",        null: false
+    t.time     "close",       null: false
+    t.string   "day_of_week", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["location_id", "day_of_week"], name: "index_schedule_locations_on_location_id_and_day_of_week", unique: true
+    t.index ["location_id"], name: "index_schedule_locations_on_location_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Open:</strong>
+  <%= @schedule_location.open %>
+</p>
+
+<p>
+  <strong>Close:</strong>
+  <%= @schedule_location.close %>
+</p>
+
+<p>
+  <strong>Day of week:</strong>
+  <%= @schedule_location.day_of_week %>
+</p>
+
+<%= link_to 'Edit', edit_location_schedule_location_path(@location, @schedule_location) %> |
+<%= link_to 'Back', location_schedule_locations_path %>

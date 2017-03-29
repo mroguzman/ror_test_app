@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= "Schedule for #{@location.name}" %></h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Open</th>
+      <th>Close</th>
+      <th>Day of week</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @schedule_locations.each do |schedule_location| %>
+      <tr>
+        <td><%= schedule_location.open.strftime('%k:%M') %></td>
+        <td><%= schedule_location.close.strftime('%k:%M') %></td>
+        <td><%= schedule_location.day_of_week %></td>
+        <td><%= link_to 'Edit', edit_location_schedule_location_path(@location.id, schedule_location) %></td>
+        <td><%= link_to 'Destroy', location_schedule_location_path(@location.id, schedule_location), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div class="row">
+  <div class="col-md-3">
+    <%= link_to 'New Schedule Location', new_location_schedule_location_path %>
+  </div>
+  <div class="col-md-2">
+    <%= link_to 'Back', locations_path %>
+  </div>
+</div>
