@@ -20,4 +20,8 @@ Rails.application.routes.draw do
   resources :locations do
     resources :schedule_locations
   end
+
+  namespace :api, defaults: { format: :json } do
+    post :schedule, to: 'scheduler#is_open_or_close_to_location'
+  end
 end
