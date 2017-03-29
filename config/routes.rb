@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     end
   end
 
+  scope "/admin" do
+    resources :users
+  end
+
   resources :locations do
     resources :schedule_locations
   end
